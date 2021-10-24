@@ -1,25 +1,15 @@
 import { FC } from 'react'
-import { Button, TableCell, Typography, Box } from '@mui/material'
+import { Button, TableCell, Box } from '@mui/material'
 import { Asset } from '../../types'
 import { formatCurrency, formatNumber } from '../../utils/number'
 import ProfitLossLabel from '../ProfitLossLabel'
+import TableBodyText from '../typography/TableBodyText'
+import TableBodySubText from '../typography/TableBodySubText'
 import { StyledTableRow, AssetInfoWrapper } from './PortfolioAsset.css'
 
 export interface PortfolioAssetProps {
   asset: Asset
 }
-
-const TableBodyText: FC = ({ children }) => (
-  <Typography variant="tableCell1" component="p">
-    {children}
-  </Typography>
-)
-
-const TableBodySubText: FC = ({ children }) => (
-  <Typography variant="tableCell2" component="p">
-    {children}
-  </Typography>
-)
 
 const PortfolioAsset: FC<PortfolioAssetProps> = ({ asset }) => (
   <StyledTableRow>

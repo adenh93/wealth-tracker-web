@@ -5,22 +5,16 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-  Typography,
   Paper,
 } from '@mui/material'
 import { Asset } from '../../types'
 import PortfolioAsset from '../PortfolioAsset'
+import TableHeadText from '../typography/TableHeadText'
 import { StyledTableHead } from './PortfolioTable.css'
 
 export interface PortfolioTableProps {
   assets: Asset[]
 }
-
-const TableHeadText: FC = ({ children }) => (
-  <Typography variant="tableHeader" component="p">
-    {children}
-  </Typography>
-)
 
 const PortfolioTable: FC<PortfolioTableProps> = ({ assets }) => (
   <TableContainer component={Paper}>
