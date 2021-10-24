@@ -8,7 +8,7 @@ const ${componentName}: FC<${componentName}Props> = () => <></>
 export default ${componentName}`
 
 const testTemplate = (componentName) =>
-  `import { render } from '../../../utils/testUtils'
+  `import { render } from '../../../../utils/testUtils'
 import ${componentName} from '../${componentName}'
 
 describe('${componentName} component tests', () => {
@@ -24,7 +24,7 @@ const storiesTemplate = (componentName) =>
 import { Story } from '@storybook/react'
   
 const config = {
-  title: 'Components/${componentName}',
+  title: 'Components/UI/${componentName}',
   component: ${componentName},
 }
 

@@ -1,6 +1,7 @@
 import { blueGrey, grey } from '@mui/material/colors'
 
 const typography = {
+  fontFamily: '"Open Sans", sans-serif',
   h1: {
     colors: blueGrey[900],
     fontSize: 48,
@@ -15,11 +16,21 @@ const typography = {
   },
   body1: {
     color: blueGrey[700],
+    fontWeight: 500,
     fontSize: 24,
   },
   body2: {
     color: grey[600],
     fontSize: 20,
+  },
+  subtitle1: {
+    color: blueGrey[700],
+    fontSize: 18,
+    lineHeight: 1.5,
+  },
+  subtitle2: {
+    color: grey[600],
+    fontSize: 18,
   },
   tableHeader: {
     color: 'white',
