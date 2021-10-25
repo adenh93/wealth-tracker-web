@@ -1,14 +1,17 @@
-import PortfolioAsset, { PortfolioAssetProps } from './PortfolioAsset'
 import { Story } from '@storybook/react'
+import { Box } from '@mui/material'
 import { Asset } from '../../types'
+import RemoveAssetModal, { RemoveAssetModalProps } from './RemoveAssetModal'
 
 const config = {
-  title: 'Components/PortfolioAsset',
-  component: PortfolioAsset,
+  title: 'Components/RemoveAssetModal',
+  component: RemoveAssetModal,
 }
 
-const Template: Story<PortfolioAssetProps> = (args) => (
-  <PortfolioAsset {...args} />
+const Template: Story<RemoveAssetModalProps> = (args) => (
+  <Box>
+    <RemoveAssetModal {...args} />
+  </Box>
 )
 
 export const Primary = Template.bind({})
@@ -25,6 +28,9 @@ const asset: Asset = {
 
 Primary.args = {
   asset,
+  open: true,
+  handleDelete: () => {},
+  handleClose: () => {},
 }
 
 export default config

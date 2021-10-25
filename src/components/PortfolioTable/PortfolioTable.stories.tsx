@@ -15,6 +15,7 @@ export const Primary = Template.bind({})
 
 const assets: Asset[] = [
   {
+    id: 'test-id-1',
     logoSrc: 'http://simpleicon.com/wp-content/uploads/apple.png',
     name: 'Apple Inc.',
     ticker: 'AAPL',
@@ -23,6 +24,7 @@ const assets: Asset[] = [
     holdings: 1350,
   },
   {
+    id: 'test-id-2',
     logoSrc:
       'https://upload.wikimedia.org/wikipedia/commons/4/4e/BitConnect.png',
     name: 'Bitconnect',

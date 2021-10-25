@@ -35,7 +35,7 @@ const PortfolioTable: FC<PortfolioTableProps> = ({ assets }) => (
       </StyledTableHead>
       <TableBody>
         {assets.map((asset: Asset) => (
-          <PortfolioAsset key={asset.ticker} asset={asset} />
+          <PortfolioAsset key={asset.id} asset={asset} />
         ))}
       </TableBody>
     </Table>

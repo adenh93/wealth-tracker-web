@@ -4,6 +4,7 @@ import PortfolioAsset from '..'
 
 describe('Portfolio Asset Tests', () => {
   const mockAsset: Asset = {
+    id: 'test-id',
     logoSrc: 'https://localhost:3000/image.png',
     name: 'Apple Inc.',
     ticker: 'AAPL',

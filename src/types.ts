@@ -1,4 +1,5 @@
 export interface Asset {
+  id: string
   logoSrc: string
   name: string
   ticker: string

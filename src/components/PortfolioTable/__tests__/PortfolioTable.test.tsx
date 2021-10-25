@@ -5,6 +5,7 @@ import { render } from '../../../utils/testUtils'
 describe('PortfolioTable component tests', () => {
   const mockAssets: Asset[] = [
     {
+      id: 'test-id-1',
       logoSrc: 'https://localhost:3000/test.png',
       name: 'Apple Inc.',
       ticker: 'AAPL',
@@ -13,6 +14,7 @@ describe('PortfolioTable component tests', () => {
       holdings: 1350,
     },
     {
+      id: 'test-id-2',
       logoSrc: 'https://localhost:3000/test.png',
       name: 'Bitconnect',
       ticker: 'BCC',
