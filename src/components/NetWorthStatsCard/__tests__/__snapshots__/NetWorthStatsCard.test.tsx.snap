@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NetWorthStatsCard component tests it shows negative gains 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-subtitle1 css-y57afs-MuiTypography-root"
+>
+  -
+   
+  A$9,999.99
+</p>
+`;
+
+exports[`NetWorthStatsCard component tests it shows negative gains 2`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+>
+  A$99,999.99
+</p>
+`;
+
+exports[`NetWorthStatsCard component tests it shows positive gains 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-subtitle1 css-14hiap2-MuiTypography-root"
+>
+  +
+   
+  A$9,999.99
+</p>
+`;
+
+exports[`NetWorthStatsCard component tests it shows positive gains 2`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+>
+  A$99,999.99
+</p>
+`;
+
+exports[`NetWorthStatsCard component tests matches snapshot 1`] = `[Function]`;
