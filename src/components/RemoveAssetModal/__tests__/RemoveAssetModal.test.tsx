@@ -1,4 +1,3 @@
-import { Simulate } from 'react-dom/test-utils'
 import { waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Asset } from '../../../types'
@@ -22,7 +21,7 @@ describe('RemoveAssetModal component tests', () => {
       <RemoveAssetModal
         asset={mockAsset}
         open={true}
-        handleDelete={jest.fn()}
+        handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
     )
@@ -35,7 +34,7 @@ describe('RemoveAssetModal component tests', () => {
       <RemoveAssetModal
         asset={mockAsset}
         open={true}
-        handleDelete={jest.fn()}
+        handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
     )
@@ -48,7 +47,7 @@ describe('RemoveAssetModal component tests', () => {
       <RemoveAssetModal
         asset={mockAsset}
         open={true}
-        handleDelete={jest.fn()}
+        handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
     )
@@ -67,7 +66,7 @@ describe('RemoveAssetModal component tests', () => {
       <RemoveAssetModal
         asset={mockAsset}
         open={true}
-        handleDelete={jest.fn()}
+        handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
     )
@@ -79,46 +78,5 @@ describe('RemoveAssetModal component tests', () => {
     const confirmButton = getByTestId('confirm-button') as HTMLButtonElement
 
     await waitFor(() => expect(confirmButton.disabled).toBe(false))
-  })
-
-  test('confirm button calls handleDelete when clicked', async () => {
-    const mockHandleDelete = jest.fn()
-
-    const { getByTestId } = render(
-      <RemoveAssetModal
-        asset={mockAsset}
-        open={true}
-        handleDelete={mockHandleDelete}
-        handleClose={jest.fn()}
-      />
-    )
-
-    const input = getByTestId('delete-input')
-
-    userEvent.type(input, 'delete')
-
-    const confirmButton = getByTestId('confirm-button') as HTMLButtonElement
-
-    Simulate.click(confirmButton)
-
-    expect(mockHandleDelete).toHaveBeenCalled()
-  })
-
-  test('cancel button calls handleClose when clicked', () => {
-    const mockHandleClose = jest.fn()
-
-    const { getByTestId } = render(
-      <RemoveAssetModal
-        asset={mockAsset}
-        open={true}
-        handleDelete={jest.fn()}
-        handleClose={mockHandleClose}
-      />
-    )
-
-    const cancelButton = getByTestId('cancel-button')
-    Simulate.click(cancelButton)
-
-    expect(mockHandleClose).toHaveBeenCalled()
   })
 })

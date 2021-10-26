@@ -1,20 +1,19 @@
 import { ChangeEvent, FC, useState } from 'react'
-import { Button, Input, Typography } from '@mui/material'
-import Modal from '../ui/Modal'
+import { Input, Typography } from '@mui/material'
+import ConfirmModal from '../ui/ConfirmModal'
 import { Asset } from '../../types'
-import { ButtonContainer } from './RemoveAssetModal.css'
 
 export interface RemoveAssetModalProps {
   asset: Asset
   open: boolean
-  handleDelete: () => void
-  handleClose: (e: any) => void
+  handleConfirm: () => void
+  handleClose: () => void
 }
 
 const RemoveAssetModal: FC<RemoveAssetModalProps> = ({
   asset,
   open,
-  handleDelete,
+  handleConfirm,
   handleClose,
 }) => {
   const [inputState, setInputState] = useState('')
@@ -22,7 +21,13 @@ const RemoveAssetModal: FC<RemoveAssetModalProps> = ({
     setInputState(e.currentTarget.value)
 
   return (
-    <Modal open={open} title="Delete Asset" handleClose={handleClose}>
+    <ConfirmModal
+      open={open}
+      title="Delete Asset"
+      disabled={inputState !== 'delete'}
+      handleConfirm={handleConfirm}
+      handleClose={handleClose}
+    >
       <Typography variant="body2" sx={{ mb: 2 }}>
         Are you sure you want to remove the following asset from your portfolio?
         This action cannot be reversed:
@@ -39,26 +44,7 @@ const RemoveAssetModal: FC<RemoveAssetModalProps> = ({
         sx={{ mb: 4 }}
         data-testid="delete-input"
       />
-      <ButtonContainer>
-        <Button
-          variant="contained"
-          color="error"
-          disabled={inputState !== 'delete'}
-          onClick={handleDelete}
-          data-testid="confirm-button"
-        >
-          Confirm
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={handleClose}
-          data-testid="cancel-button"
-        >
-          Cancel
-        </Button>
-      </ButtonContainer>
-    </Modal>
+    </ConfirmModal>
   )
 }
 

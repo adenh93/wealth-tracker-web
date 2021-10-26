@@ -1,14 +1,14 @@
 import { Story } from '@storybook/react'
+import EditAssetModal, { EditAssetModalProps } from './EditAssetModal'
 import { Asset } from '../../types'
-import RemoveAssetModal, { RemoveAssetModalProps } from './RemoveAssetModal'
 
 const config = {
-  title: 'Components/RemoveAssetModal',
-  component: RemoveAssetModal,
+  title: 'Components/EditAssetModal',
+  component: EditAssetModal,
 }
 
-const Template: Story<RemoveAssetModalProps> = (args) => (
-  <RemoveAssetModal {...args} />
+const Template: Story<EditAssetModalProps> = (args) => (
+  <EditAssetModal {...args} />
 )
 
 export const Primary = Template.bind({})
@@ -26,7 +26,7 @@ const asset: Asset = {
 Primary.args = {
   asset,
   open: true,
-  handleConfirm: () => {},
+  handleSave: () => {},
   handleClose: () => {},
 }
 

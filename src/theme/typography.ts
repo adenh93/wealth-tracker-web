@@ -1,6 +1,7 @@
+import { TypographyVariants } from '@mui/material'
 import { blueGrey, grey } from '@mui/material/colors'
 
-const typography = {
+const typography: Partial<TypographyVariants> = {
   fontFamily: '"Open Sans", sans-serif',
   h1: {
     colors: blueGrey[900],
