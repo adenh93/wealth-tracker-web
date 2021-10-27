@@ -1,5 +1,6 @@
+import { FC } from 'react'
 import { TextField, Typography } from '@mui/material'
-import { ChangeEvent, FC, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { Asset } from '../../types'
 import ConfirmModal from '../ui/ConfirmModal'
 
@@ -16,27 +17,23 @@ const EditAssetModal: FC<EditAssetModalProps> = ({
   handleSave,
   handleClose,
 }) => {
-  const [newHoldings, setNewHoldings] = useState<number>(asset.holdings)
-
-  const onChangeHoldings = (e: ChangeEvent<HTMLInputElement>) =>
-    setNewHoldings(+e.currentTarget.value)
+  const { register, handleSubmit } = useForm()
 
   return (
     <ConfirmModal
       open={open}
       title="Edit Asset"
-      handleConfirm={handleSave}
+      handleConfirm={handleSubmit(handleSave)}
       handleClose={handleClose}
     >
       <Typography variant="body2" sx={{ mb: 2 }}>
         Editing holdings for {asset.name} ({asset.ticker}):
       </Typography>
       <TextField
+        {...register('newHoldings')}
         variant="standard"
         label="New Holdings"
         type="number"
-        value={newHoldings}
-        onChange={onChangeHoldings}
         data-testid="new-holdings-input"
       />
     </ConfirmModal>
