@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { TextField, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
-import { Asset } from '../../types'
+import { OwnedAsset } from '../../types'
 import ConfirmModal from '../ui/ConfirmModal'
 
 export interface EditAssetModalProps {
-  asset: Asset
+  asset: OwnedAsset
   open: boolean
   handleSave: () => void
   handleClose: (e: any) => void

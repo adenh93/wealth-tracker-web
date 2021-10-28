@@ -1,6 +1,6 @@
-import PortfolioAsset, { PortfolioAssetProps } from './PortfolioAsset'
 import { Story } from '@storybook/react'
-import { Asset } from '../../types'
+import PortfolioAsset, { PortfolioAssetProps } from './PortfolioAsset'
+import { OwnedAsset } from '../../types'
 
 const config = {
   title: 'Components/PortfolioAsset',
@@ -13,7 +13,7 @@ const Template: Story<PortfolioAssetProps> = (args) => (
 
 export const Primary = Template.bind({})
 
-const asset: Asset = {
+const asset: OwnedAsset = {
   id: 'test-id',
   logoSrc: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/BitConnect.png',
   name: 'Bitconnect',

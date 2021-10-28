@@ -1,10 +1,10 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { Input, Typography } from '@mui/material'
 import ConfirmModal from '../ui/ConfirmModal'
-import { Asset } from '../../types'
+import { OwnedAsset } from '../../types'
 
 export interface RemoveAssetModalProps {
-  asset: Asset
+  asset: OwnedAsset
   open: boolean
   handleConfirm: () => void
   handleClose: () => void

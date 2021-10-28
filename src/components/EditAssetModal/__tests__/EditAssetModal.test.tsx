@@ -1,9 +1,9 @@
-import { Asset } from '../../../types'
+import { OwnedAsset } from '../../../types'
 import { render } from '../../../utils/testUtils'
 import EditAssetModal from '../EditAssetModal'
 
 describe('EditAssetModal component tests', () => {
-  const mockAsset: Asset = {
+  const mockAsset: OwnedAsset = {
     id: 'test-id',
     logoSrc:
       'https://upload.wikimedia.org/wikipedia/commons/4/4e/BitConnect.png',

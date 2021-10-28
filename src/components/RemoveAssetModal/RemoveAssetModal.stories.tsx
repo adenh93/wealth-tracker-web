@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { Asset } from '../../types'
+import { OwnedAsset } from '../../types'
 import RemoveAssetModal, { RemoveAssetModalProps } from './RemoveAssetModal'
 
 const config = {
@@ -13,7 +13,7 @@ const Template: Story<RemoveAssetModalProps> = (args) => (
 
 export const Primary = Template.bind({})
 
-const asset: Asset = {
+const asset: OwnedAsset = {
   id: 'test-id',
   logoSrc: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/BitConnect.png',
   name: 'Bitconnect',

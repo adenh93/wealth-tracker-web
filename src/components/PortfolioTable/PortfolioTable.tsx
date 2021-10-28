@@ -7,13 +7,13 @@ import {
   TableRow,
   Paper,
 } from '@mui/material'
-import { Asset } from '../../types'
+import { OwnedAsset } from '../../types'
 import PortfolioAsset from '../PortfolioAsset'
 import TableHeadText from '../typography/TableHeadText'
 import { StyledTableHead } from './PortfolioTable.css'
 
 export interface PortfolioTableProps {
-  assets: Asset[]
+  assets: OwnedAsset[]
 }
 
 const PortfolioTable: FC<PortfolioTableProps> = ({ assets }) => (
@@ -34,7 +34,7 @@ const PortfolioTable: FC<PortfolioTableProps> = ({ assets }) => (
         </TableRow>
       </StyledTableHead>
       <TableBody>
-        {assets.map((asset: Asset) => (
+        {assets.map((asset: OwnedAsset) => (
           <PortfolioAsset key={asset.id} asset={asset} />
         ))}
       </TableBody>

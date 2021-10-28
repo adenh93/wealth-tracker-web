@@ -1,9 +1,9 @@
 import PortfolioTable from '..'
-import { Asset } from '../../../types'
+import { OwnedAsset } from '../../../types'
 import { render } from '../../../utils/testUtils'
 
 describe('PortfolioTable component tests', () => {
-  const mockAssets: Asset[] = [
+  const mockAssets: OwnedAsset[] = [
     {
       id: 'test-id-1',
       logoSrc: 'https://localhost:3000/test.png',

@@ -1,9 +1,9 @@
 import { render } from '../../../utils/testUtils'
-import { Asset } from '../../../types'
+import { OwnedAsset } from '../../../types'
 import PortfolioAsset from '..'
 
 describe('Portfolio Asset Tests', () => {
-  const mockAsset: Asset = {
+  const mockAsset: OwnedAsset = {
     id: 'test-id',
     logoSrc: 'https://localhost:3000/image.png',
     name: 'Apple Inc.',

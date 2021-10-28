@@ -1,11 +1,11 @@
 import { waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Asset } from '../../../types'
+import { OwnedAsset } from '../../../types'
 import { render } from '../../../utils/testUtils'
 import RemoveAssetModal from '../RemoveAssetModal'
 
 describe('RemoveAssetModal component tests', () => {
-  const mockAsset: Asset = {
+  const mockAsset: OwnedAsset = {
     id: 'test-id',
     logoSrc:
       'https://upload.wikimedia.org/wikipedia/commons/4/4e/BitConnect.png',

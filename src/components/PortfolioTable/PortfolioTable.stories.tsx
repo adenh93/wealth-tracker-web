@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { Asset } from '../../types'
+import { OwnedAsset } from '../../types'
 import PortfolioTable, { PortfolioTableProps } from './PortfolioTable'
 
 const config = {
@@ -13,7 +13,7 @@ const Template: Story<PortfolioTableProps> = (args) => (
 
 export const Primary = Template.bind({})
 
-const assets: Asset[] = [
+const assets: OwnedAsset[] = [
   {
     id: 'test-id-1',
     logoSrc: 'http://simpleicon.com/wp-content/uploads/apple.png',

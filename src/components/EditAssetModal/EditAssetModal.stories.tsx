@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react'
 import EditAssetModal, { EditAssetModalProps } from './EditAssetModal'
-import { Asset } from '../../types'
+import { OwnedAsset } from '../../types'
 
 const config = {
   title: 'Components/EditAssetModal',
@@ -13,7 +13,7 @@ const Template: Story<EditAssetModalProps> = (args) => (
 
 export const Primary = Template.bind({})
 
-const asset: Asset = {
+const asset: OwnedAsset = {
   id: 'test-id',
   logoSrc: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/BitConnect.png',
   name: 'Bitconnect',

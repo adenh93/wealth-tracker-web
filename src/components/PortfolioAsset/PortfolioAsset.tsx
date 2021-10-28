@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Button, TableCell, Box } from '@mui/material'
-import { Asset } from '../../types'
+import { OwnedAsset } from '../../types'
 import { formatCurrency, formatNumber } from '../../utils/number'
 import ProfitLossLabel from '../ProfitLossLabel'
 import TableBodyText from '../typography/TableBodyText'
@@ -8,7 +8,7 @@ import TableBodySubText from '../typography/TableBodySubText'
 import { StyledTableRow, AssetInfoWrapper } from './PortfolioAsset.css'
 
 export interface PortfolioAssetProps {
-  asset: Asset
+  asset: OwnedAsset
 }
 
 const PortfolioAsset: FC<PortfolioAssetProps> = ({ asset }) => (
