@@ -1,16 +1,20 @@
+import { ApolloProvider } from '@apollo/client'
 import CssBaseline from '@mui/material/CssBaseline'
-import { ThemeProvider } from '@mui/material/styles'
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
+import { ThemeProvider } from '@mui/material'
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
+import client from '../src/apolloClient'
 import theme from '../src/theme'
 
 const withThemeProvider = (Story, context) => {
   return (
-    <EmotionThemeProvider theme={theme}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Story {...context} />
-      </ThemeProvider>
-    </EmotionThemeProvider>
+    <ApolloProvider client={client}>
+      <EmotionThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Story {...context} />
+        </ThemeProvider>
+      </EmotionThemeProvider>
+    </ApolloProvider>
   )
 }
 

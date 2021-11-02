@@ -1,37 +1,41 @@
-import { FC } from 'react'
+import { ChangeEvent, FC } from 'react'
 import { Typography, TextField, Box } from '@mui/material'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { Asset } from '../../types'
-import { AddAssetSchema } from '../../validationSchemas'
+import { AddCryptoCurrencySchema } from '../../validationSchemas'
 import ConfirmModal from '../ui/ConfirmModal'
-import AssetAutocomplete from '../ui/AssetAutocomplete'
+import CryptoCurrencyAutocomplete from '../ui/CryptoCurrencyAutocomplete'
+import { CryptoCurrency } from '../../graphql/types'
 
-export interface AddAssetModalProps {
-  options: Asset[]
+export interface AddCryptoCurrencyModalProps {
+  options: CryptoCurrency[]
   open: boolean
+  loading: boolean
   handleSave: () => void
   handleClose: (e: any) => void
+  handleFilter: (e: any, value: string) => void
 }
 
-export interface AddAssetForm {
-  assetId: string | undefined
+export interface AddCryptoCurrencyForm {
+  id: string | undefined
   holdings: number | undefined
 }
 
-const AddAssetModal: FC<AddAssetModalProps> = ({
+const AddCryptoCurrencyModal: FC<AddCryptoCurrencyModalProps> = ({
   options,
   open,
+  loading,
   handleSave,
   handleClose,
+  handleFilter,
 }) => {
   const {
     setValue,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AddAssetForm>({
-    resolver: yupResolver(AddAssetSchema),
+  } = useForm<AddCryptoCurrencyForm>({
+    resolver: yupResolver(AddCryptoCurrencySchema),
   })
 
   return (
@@ -43,16 +47,17 @@ const AddAssetModal: FC<AddAssetModalProps> = ({
         handleClose={handleClose}
       >
         <Typography variant="body2" sx={{ mb: 2 }}>
-          To add a new asset to your portfolio, select the asset from the list
-          below, followed by the total number of units held.
+          To add a new Cryptocurrency asset to your portfolio, select the asset
+          from the list below, followed by the total number of units held.
         </Typography>
         <Box sx={{ mb: 2 }}>
-          <AssetAutocomplete
+          <CryptoCurrencyAutocomplete
             options={options}
-            error={errors.assetId && errors.assetId.message}
-            onChange={(e: any, asset: Asset | null) =>
-              setValue('assetId', asset?.id)
+            error={errors.id && errors.id.message}
+            onChange={(e: any, cryptoCurrency: CryptoCurrency | null) =>
+              setValue('id', cryptoCurrency?.id)
             }
+            onFilter={handleFilter}
           />
         </Box>
         <TextField
@@ -70,4 +75,4 @@ const AddAssetModal: FC<AddAssetModalProps> = ({
   )
 }
 
-export default AddAssetModal
+export default AddCryptoCurrencyModal

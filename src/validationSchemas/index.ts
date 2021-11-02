@@ -1,1 +1,1 @@
-export { default as AddAssetSchema } from './AddAssetSchema'
+export { default as AddCryptoCurrencySchema } from './AddCryptoCurrencySchema'

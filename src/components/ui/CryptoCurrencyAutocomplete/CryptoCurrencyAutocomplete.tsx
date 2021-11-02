@@ -1,20 +1,22 @@
 import { FC } from 'react'
 import { Autocomplete, Box, TextField } from '@mui/material'
-import { Asset } from '../../../types'
+import { CryptoCurrency } from '../../../graphql/types'
+import { CMC_LOGO_URL } from '../../../constants'
 
-export interface AssetAutocompleteProps {
-  options: Asset[]
+export interface CryptoCurrencyAutocompleteProps {
+  options: CryptoCurrency[]
   error?: string
-  onChange: (e: any, asset: Asset | null) => void
+  onChange: (e: any, cryptoCurrency: CryptoCurrency | null) => void
+  onFilter: (e: any, value: string) => void
 }
 
-const AssetAutocomplete: FC<AssetAutocompleteProps> = ({
+const CryptoCurrencyAutocomplete: FC<CryptoCurrencyAutocompleteProps> = ({
   options,
   error,
   onChange,
+  onFilter,
 }) => {
-  const getOptionLabel = (option: Asset): string =>
-    `${option.name} (${option.ticker})`
+  const getOptionLabel = (option: CryptoCurrency): string => option.name
 
   return (
     <Autocomplete
@@ -23,7 +25,9 @@ const AssetAutocomplete: FC<AssetAutocompleteProps> = ({
       options={options}
       onChange={onChange}
       getOptionLabel={getOptionLabel}
-      renderOption={(props, option: Asset) => (
+      onInputChange={onFilter}
+      filterOptions={(x) => x}
+      renderOption={(props, option: CryptoCurrency) => (
         <Box
           component="li"
           sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
@@ -32,10 +36,10 @@ const AssetAutocomplete: FC<AssetAutocompleteProps> = ({
           <img
             loading="lazy"
             width="20"
-            src={option.logoSrc}
+            src={`${CMC_LOGO_URL}/${option.id}.png`}
             alt={`${option.name} logo`}
           />
-          {option.name} ({option.ticker})
+          {option.name} ({option.symbol})
         </Box>
       )}
       renderInput={(params) => (
@@ -54,4 +58,4 @@ const AssetAutocomplete: FC<AssetAutocompleteProps> = ({
   )
 }
 
-export default AssetAutocomplete
+export default CryptoCurrencyAutocomplete

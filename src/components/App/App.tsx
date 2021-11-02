@@ -1,16 +1,20 @@
 import { ApolloProvider } from '@apollo/client'
-import { ThemeProvider } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
+import AddCryptoCurrencyContainer from '../../containers/AddCryptoCurrencyContainer'
 import client from '../../apolloClient'
 import theme from '../../theme'
 
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <div className="App">Test</div>
-      </ThemeProvider>
-    </ApolloProvider>
-  )
-}
+const App = () => (
+  <ApolloProvider client={client}>
+    <ThemeProvider theme={theme}>
+      <EmotionThemeProvider theme={theme}>
+        <CssBaseline />
+        <AddCryptoCurrencyContainer />
+      </EmotionThemeProvider>
+    </ThemeProvider>
+  </ApolloProvider>
+)
 
 export default App

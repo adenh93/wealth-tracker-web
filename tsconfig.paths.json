@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+      "paths": {
+        "@emotion/react": ["./node_modules/@emotion/react"]
+      }
+    }
+  }
