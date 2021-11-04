@@ -1,16 +1,16 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { Input, Typography } from '@mui/material'
 import ConfirmModal from '../ui/ConfirmModal'
-import { OwnedAsset } from '../../types'
+import { CryptoCurrencyHolding } from '../../graphql/types'
 
-export interface RemoveAssetModalProps {
-  asset: OwnedAsset
+export interface RemoveCryptoCurrencyModalProps {
+  asset: CryptoCurrencyHolding
   open: boolean
   handleConfirm: () => void
   handleClose: () => void
 }
 
-const RemoveAssetModal: FC<RemoveAssetModalProps> = ({
+const RemoveCryptoCurrencyModal: FC<RemoveCryptoCurrencyModalProps> = ({
   asset,
   open,
   handleConfirm,
@@ -33,7 +33,7 @@ const RemoveAssetModal: FC<RemoveAssetModalProps> = ({
         This action cannot be reversed:
       </Typography>
       <Typography variant="body2" fontWeight="bold" sx={{ mb: 2 }}>
-        {asset.name} ({asset.ticker})
+        {asset.cryptoCurrency?.name} ({asset.cryptoCurrency?.symbol})
       </Typography>
       <Typography variant="body2" sx={{ mb: 2 }}>
         If you are sure, enter 'delete' to remove this asset.
@@ -48,4 +48,4 @@ const RemoveAssetModal: FC<RemoveAssetModalProps> = ({
   )
 }
 
-export default RemoveAssetModal
+export default RemoveCryptoCurrencyModal

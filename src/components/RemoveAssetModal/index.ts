@@ -1,2 +1,2 @@
-export { default } from './RemoveAssetModal'
-export type { RemoveAssetModalProps } from './RemoveAssetModal'
+export { default } from './RemoveCryptoCurrencyModal'
+export type { RemoveCryptoCurrencyModalProps } from './RemoveCryptoCurrencyModal'

@@ -1,24 +1,28 @@
 import { waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { OwnedAsset } from '../../../types'
+import { CryptoCurrencyHolding } from '../../../graphql/types'
 import { render } from '../../../utils/testUtils'
-import RemoveAssetModal from '../RemoveAssetModal'
+import RemoveCryptoCurrencyModal from '../RemoveCryptoCurrencyModal'
 
-describe('RemoveAssetModal component tests', () => {
-  const mockAsset: OwnedAsset = {
-    id: 'test-id',
-    logoSrc:
-      'https://upload.wikimedia.org/wikipedia/commons/4/4e/BitConnect.png',
-    name: 'Bitconnect',
-    ticker: 'BCC',
-    price: 0.003021,
-    gain24Hr: -0.9984,
-    holdings: 2450000.15,
+describe('RemoveCryptoCurrencyModal component tests', () => {
+  const mockAsset: CryptoCurrencyHolding = {
+    cryptoCurrency: {
+      id: 1,
+      rank: 1,
+      name: 'Bitcoin',
+      symbol: 'BTC',
+    },
+    id: 2,
+    cryptoCurrencyId: 1,
+    holdings: 15.25,
+    price: 80532.5,
+    percentChange24h: 1.54,
+    netHoldingsValue: 1228120.625,
   }
 
   test('matches snapshot', () => {
     const { asFragment } = render(
-      <RemoveAssetModal
+      <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
         handleConfirm={jest.fn()}
@@ -31,7 +35,7 @@ describe('RemoveAssetModal component tests', () => {
 
   test('renders asset details correctly', () => {
     const { getByText } = render(
-      <RemoveAssetModal
+      <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
         handleConfirm={jest.fn()}
@@ -39,12 +43,12 @@ describe('RemoveAssetModal component tests', () => {
       />
     )
 
-    expect(getByText('Bitconnect (BCC)')).not.toBeNull()
+    expect(getByText('Bitcoin (BTC)')).not.toBeNull()
   })
 
   test('confirm button is disabled if input value is not "delete"', () => {
     const { getByTestId } = render(
-      <RemoveAssetModal
+      <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
         handleConfirm={jest.fn()}
@@ -63,7 +67,7 @@ describe('RemoveAssetModal component tests', () => {
 
   test('confirm button is enabled if input value equals "delete"', async () => {
     const { getByTestId } = render(
-      <RemoveAssetModal
+      <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
         handleConfirm={jest.fn()}
