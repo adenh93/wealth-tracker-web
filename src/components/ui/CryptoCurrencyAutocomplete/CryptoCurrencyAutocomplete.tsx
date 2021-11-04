@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Autocomplete, Box, TextField } from '@mui/material'
 import { CryptoCurrency } from '../../../graphql/types'
-import { CMC_LOGO_URL } from '../../../constants'
+import { getCMCLogoUrl } from '../../../utils/cryptoCurrency'
 
 export interface CryptoCurrencyAutocompleteProps {
   options: CryptoCurrency[]
@@ -36,7 +36,7 @@ const CryptoCurrencyAutocomplete: FC<CryptoCurrencyAutocompleteProps> = ({
           <img
             loading="lazy"
             width="20"
-            src={`${CMC_LOGO_URL}/${option.id}.png`}
+            src={getCMCLogoUrl(option.id)}
             alt={`${option.name} logo`}
           />
           {option.name} ({option.symbol})

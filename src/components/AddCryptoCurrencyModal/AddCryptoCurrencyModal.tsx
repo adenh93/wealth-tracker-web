@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react'
+import { FC } from 'react'
 import { Typography, TextField, Box } from '@mui/material'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
@@ -10,7 +10,6 @@ import { CryptoCurrency } from '../../graphql/types'
 export interface AddCryptoCurrencyModalProps {
   options: CryptoCurrency[]
   open: boolean
-  loading: boolean
   handleSave: () => void
   handleClose: (e: any) => void
   handleFilter: (e: any, value: string) => void
@@ -24,7 +23,6 @@ export interface AddCryptoCurrencyForm {
 const AddCryptoCurrencyModal: FC<AddCryptoCurrencyModalProps> = ({
   options,
   open,
-  loading,
   handleSave,
   handleClose,
   handleFilter,
@@ -55,7 +53,7 @@ const AddCryptoCurrencyModal: FC<AddCryptoCurrencyModalProps> = ({
             options={options}
             error={errors.id && errors.id.message}
             onChange={(e: any, cryptoCurrency: CryptoCurrency | null) =>
-              setValue('id', cryptoCurrency?.id)
+              setValue('id', String(cryptoCurrency?.id))
             }
             onFilter={handleFilter}
           />

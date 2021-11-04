@@ -24,7 +24,10 @@ const ProfitLossLabel: FC<ProfitLossLabelProps> = ({
           signDisplay: 'never',
           maximumFractionDigits: 2,
         })
-      : formatPercent(value, { signDisplay: 'never', maximumFractionDigits: 2 })
+      : formatPercent(value / 100, {
+          signDisplay: 'never',
+          maximumFractionDigits: 2,
+        })
 
   return (
     <Typography

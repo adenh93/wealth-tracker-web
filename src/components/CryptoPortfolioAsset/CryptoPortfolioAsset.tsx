@@ -1,45 +1,48 @@
 import { FC } from 'react'
 import { Button, TableCell, Box } from '@mui/material'
-import { OwnedAsset } from '../../types'
 import { formatCurrency, formatNumber } from '../../utils/number'
 import ProfitLossLabel from '../ProfitLossLabel'
 import TableBodyText from '../typography/TableBodyText'
 import TableBodySubText from '../typography/TableBodySubText'
-import { StyledTableRow, AssetInfoWrapper } from './PortfolioAsset.css'
+import { StyledTableRow, AssetInfoWrapper } from './CryptoPortfolioAsset.css'
+import { CryptoCurrencyHolding } from '../../graphql/types'
+import { getCMCLogoUrl } from '../../utils/cryptoCurrency'
 
-export interface PortfolioAssetProps {
-  asset: OwnedAsset
+export interface CryptoPortfolioAssetProps {
+  asset: CryptoCurrencyHolding
 }
 
-const PortfolioAsset: FC<PortfolioAssetProps> = ({ asset }) => (
+const CryptoPortfolioAsset: FC<CryptoPortfolioAssetProps> = ({ asset }) => (
   <StyledTableRow>
     <TableCell align="left">
       <AssetInfoWrapper>
         <img
           width={30}
           height={30}
-          src={asset.logoSrc}
-          alt={`${asset.name} logo`}
+          src={getCMCLogoUrl(asset.cryptoCurrencyId)}
+          alt={`${asset.cryptoCurrency?.name} logo`}
         />
         <Box>
-          <TableBodyText>{asset.name}</TableBodyText>
-          <TableBodySubText>{asset.ticker}</TableBodySubText>
+          <TableBodyText>{asset.cryptoCurrency?.name}</TableBodyText>
+          <TableBodySubText>{asset.cryptoCurrency?.symbol}</TableBodySubText>
         </Box>
       </AssetInfoWrapper>
     </TableCell>
     <TableCell align="left">
       <TableBodyText>
-        {formatCurrency(asset.price, { maximumFractionDigits: 8 })}
+        {formatCurrency(asset.price, {
+          maximumFractionDigits: asset.price >= 1 ? 2 : 8,
+        })}
       </TableBodyText>
       <ProfitLossLabel
-        value={asset.gain24Hr}
+        value={asset.percentChange24h}
         type="percent"
         variant="tableCell2"
       />
     </TableCell>
     <TableCell align="left">
       <TableBodyText>
-        {formatCurrency(asset.price * asset.holdings, {
+        {formatCurrency(asset.netHoldingsValue, {
           maximumFractionDigits: 2,
         })}
       </TableBodyText>
@@ -56,4 +59,4 @@ const PortfolioAsset: FC<PortfolioAssetProps> = ({ asset }) => (
   </StyledTableRow>
 )
 
-export default PortfolioAsset
+export default CryptoPortfolioAsset

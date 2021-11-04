@@ -3,7 +3,7 @@ import * as yup from 'yup'
 const AddCryptoCurrencySchema = yup
   .object()
   .shape({
-    id: yup.string().required('You must choose an asset.'),
+    id: yup.number().required('You must choose an asset.'),
     holdings: yup
       .number()
       .min(1, 'You must be holding at least 1 unit.')

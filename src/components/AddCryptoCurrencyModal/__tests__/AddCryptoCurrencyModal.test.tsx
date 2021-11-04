@@ -5,19 +5,19 @@ import AddCryptoCurrencyModal from '../AddCryptoCurrencyModal'
 describe('AddCryptoCurrencyModal component tests', () => {
   const mockOptions: CryptoCurrency[] = [
     {
-      id: '1',
+      id: 1,
       rank: 1,
       name: 'Bitcoin',
       symbol: 'BTC',
     },
     {
-      id: '1027',
+      id: 1027,
       rank: 2,
       name: 'Ethereum',
       symbol: 'ETH',
     },
     {
-      id: '1839',
+      id: 1839,
       rank: 3,
       name: 'Binance Coin',
       symbol: 'BNB',
@@ -29,7 +29,6 @@ describe('AddCryptoCurrencyModal component tests', () => {
       <AddCryptoCurrencyModal
         options={mockOptions}
         open={true}
-        loading={false}
         handleSave={jest.fn()}
         handleClose={jest.fn()}
         handleFilter={jest.fn()}

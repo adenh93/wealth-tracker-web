@@ -13,15 +13,59 @@ export type Scalars = {
 
 export type CryptoCurrency = {
   __typename?: 'CryptoCurrency';
-  id: Scalars['ID'];
+  id: Scalars['Int'];
   name: Scalars['String'];
   rank: Scalars['Int'];
   symbol: Scalars['String'];
 };
 
+export type CryptoCurrencyHolding = {
+  __typename?: 'CryptoCurrencyHolding';
+  cryptoCurrency?: Maybe<CryptoCurrency>;
+  cryptoCurrencyId: Scalars['Int'];
+  holdings: Scalars['Float'];
+  id: Scalars['Int'];
+  netHoldingsValue: Scalars['Float'];
+  percentChange24h: Scalars['Float'];
+  price: Scalars['Float'];
+};
+
+export type CryptoCurrencyHoldingsAddInput = {
+  cryptoCurrencyId: Scalars['Int'];
+  holdings: Scalars['Float'];
+};
+
+export type CryptoCurrencyHoldingsUpdateInput = {
+  holdings: Scalars['Float'];
+  id: Scalars['Int'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  cryptoCurrencyHoldingsAdd?: Maybe<CryptoCurrencyHolding>;
+  cryptoCurrencyHoldingsDelete?: Maybe<CryptoCurrencyHolding>;
+  cryptoCurrencyHoldingsUpdate?: Maybe<CryptoCurrencyHolding>;
+};
+
+
+export type MutationCryptoCurrencyHoldingsAddArgs = {
+  input: CryptoCurrencyHoldingsAddInput;
+};
+
+
+export type MutationCryptoCurrencyHoldingsDeleteArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationCryptoCurrencyHoldingsUpdateArgs = {
+  input: CryptoCurrencyHoldingsUpdateInput;
+};
+
 export type Query = {
   __typename?: 'Query';
   cryptoCurrencies?: Maybe<Array<CryptoCurrency>>;
+  cryptoCurrencyHoldings?: Maybe<Array<CryptoCurrencyHolding>>;
 };
 
 

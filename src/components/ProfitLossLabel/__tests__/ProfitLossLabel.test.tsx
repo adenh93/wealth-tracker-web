@@ -27,16 +27,14 @@ describe('ProfitLossLabel component tests', () => {
   })
 
   test('it shows positive percent', () => {
-    const { getByText } = render(
-      <ProfitLossLabel value={0.052} type="percent" />
-    )
+    const { getByText } = render(<ProfitLossLabel value={5.2} type="percent" />)
 
     expect(getByText('+ 5.2%')).not.toBeNull()
   })
 
   test('it shows negative percent', () => {
     const { getByText } = render(
-      <ProfitLossLabel value={-0.052} type="percent" />
+      <ProfitLossLabel value={-5.2} type="percent" />
     )
 
     expect(getByText('- 5.2%')).not.toBeNull()

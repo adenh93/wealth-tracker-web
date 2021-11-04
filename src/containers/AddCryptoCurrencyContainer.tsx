@@ -1,12 +1,12 @@
 import { useQuery } from '@apollo/client'
 import { useCallback } from 'react'
 import debounce from 'lodash.debounce'
-import AddCryptoCurrencyModal from '../../components/AddCryptoCurrencyModal'
-import { CRYPTO_CURRENCIES } from '../../graphql/query'
-import { Query } from '../../graphql/types'
+import AddCryptoCurrencyModal from '../components/AddCryptoCurrencyModal'
+import { CRYPTOCURRENCIES } from '../graphql/query'
+import { Query } from '../graphql/types'
 
-const AddAssetContainer = () => {
-  const { loading, data, refetch } = useQuery<Query>(CRYPTO_CURRENCIES, {
+const AddCryptoCurrencyContainer = () => {
+  const { data, refetch } = useQuery<Query>(CRYPTOCURRENCIES, {
     variables: { query: '' },
   })
 
@@ -20,7 +20,6 @@ const AddAssetContainer = () => {
     <AddCryptoCurrencyModal
       options={data?.cryptoCurrencies || []}
       open={true}
-      loading={loading}
       handleSave={() => {}}
       handleClose={() => {}}
       handleFilter={debouncedRefetch}
@@ -28,4 +27,4 @@ const AddAssetContainer = () => {
   )
 }
 
-export default AddAssetContainer
+export default AddCryptoCurrencyContainer

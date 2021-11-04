@@ -7,16 +7,20 @@ import {
   TableRow,
   Paper,
 } from '@mui/material'
-import { OwnedAsset } from '../../types'
-import PortfolioAsset from '../PortfolioAsset'
+import CryptoPortfolioAsset from '../CryptoPortfolioAsset'
 import TableHeadText from '../typography/TableHeadText'
-import { StyledTableHead } from './PortfolioTable.css'
+import { StyledTableHead } from './CryptoPortfolioTable.css'
+import { CryptoCurrencyHolding } from '../../graphql/types'
 
-export interface PortfolioTableProps {
-  assets: OwnedAsset[]
+export interface CryptoPortfolioTableProps {
+  assets: CryptoCurrencyHolding[]
+  loading: boolean
 }
 
-const PortfolioTable: FC<PortfolioTableProps> = ({ assets }) => (
+const CryptoPortfolioTable: FC<CryptoPortfolioTableProps> = ({
+  assets,
+  loading,
+}) => (
   <TableContainer component={Paper}>
     <Table>
       <StyledTableHead>
@@ -34,12 +38,12 @@ const PortfolioTable: FC<PortfolioTableProps> = ({ assets }) => (
         </TableRow>
       </StyledTableHead>
       <TableBody>
-        {assets.map((asset: OwnedAsset) => (
-          <PortfolioAsset key={asset.id} asset={asset} />
+        {assets.map((asset: CryptoCurrencyHolding) => (
+          <CryptoPortfolioAsset key={asset.id} asset={asset} />
         ))}
       </TableBody>
     </Table>
   </TableContainer>
 )
 
-export default PortfolioTable
+export default CryptoPortfolioTable
