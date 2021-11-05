@@ -5,7 +5,7 @@ import { ButtonContainer } from './ConfirmModal.css'
 
 export interface ConfirmModalProps extends ModalProps {
   disabled?: boolean
-  handleConfirm: () => void
+  handleConfirm: (e: any) => void
 }
 
 const ConfirmModal: FC<ConfirmModalProps> = ({

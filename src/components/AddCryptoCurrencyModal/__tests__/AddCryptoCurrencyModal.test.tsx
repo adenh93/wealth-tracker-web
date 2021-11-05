@@ -29,7 +29,11 @@ describe('AddCryptoCurrencyModal component tests', () => {
       <AddCryptoCurrencyModal
         options={mockOptions}
         open={true}
-        handleSave={jest.fn()}
+        submitting={false}
+        errors={{}}
+        register={jest.fn()}
+        setValue={jest.fn()}
+        handleSubmit={jest.fn()}
         handleClose={jest.fn()}
         handleFilter={jest.fn()}
       />

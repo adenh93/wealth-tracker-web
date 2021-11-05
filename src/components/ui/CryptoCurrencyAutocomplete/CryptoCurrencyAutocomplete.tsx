@@ -5,6 +5,7 @@ import { getCMCLogoUrl } from '../../../utils/cryptoCurrency'
 
 export interface CryptoCurrencyAutocompleteProps {
   options: CryptoCurrency[]
+  disabled?: boolean
   error?: string
   onChange: (e: any, cryptoCurrency: CryptoCurrency | null) => void
   onFilter: (e: any, value: string) => void
@@ -12,6 +13,7 @@ export interface CryptoCurrencyAutocompleteProps {
 
 const CryptoCurrencyAutocomplete: FC<CryptoCurrencyAutocompleteProps> = ({
   options,
+  disabled = false,
   error,
   onChange,
   onFilter,
@@ -23,6 +25,7 @@ const CryptoCurrencyAutocomplete: FC<CryptoCurrencyAutocompleteProps> = ({
       autoHighlight
       size="small"
       options={options}
+      disabled={disabled}
       onChange={onChange}
       getOptionLabel={getOptionLabel}
       onInputChange={onFilter}

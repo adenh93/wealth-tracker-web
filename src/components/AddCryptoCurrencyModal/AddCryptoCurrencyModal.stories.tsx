@@ -39,7 +39,9 @@ const options: CryptoCurrency[] = [
 Primary.args = {
   options,
   open: true,
-  handleSave: () => {},
+  errors: {},
+  setValue: () => {},
+  handleSubmit: () => {},
   handleClose: () => {},
   handleFilter: () => {},
 }
