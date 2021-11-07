@@ -40,8 +40,6 @@ const AddCryptoCurrencyContainer: FC = () => {
     },
   })
 
-  console.log(errors)
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedRefetch = useCallback(
     debounce((_e: any, value: string) => refetch({ query: value }), 500),

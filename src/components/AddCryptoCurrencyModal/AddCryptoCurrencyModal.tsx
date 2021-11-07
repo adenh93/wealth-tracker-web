@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Typography, TextField, Box, Alert } from '@mui/material'
+import { Typography, TextField, Box } from '@mui/material'
 import { FieldError, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import ConfirmModal from '../ui/ConfirmModal'
 import CryptoCurrencyAutocomplete from '../ui/CryptoCurrencyAutocomplete'
@@ -19,7 +19,6 @@ export interface AddCryptoCurrencyModalProps {
   options: CryptoCurrency[]
   open: boolean
   submitting: boolean
-  submitError?: string
   errors: AddCryptoCurrencyFormErrors
   register: UseFormRegister<AddCryptoCurrencyForm>
   setValue: UseFormSetValue<AddCryptoCurrencyForm>
@@ -32,7 +31,6 @@ const AddCryptoCurrencyModal: FC<AddCryptoCurrencyModalProps> = ({
   options,
   open,
   submitting,
-  submitError,
   errors,
   register,
   setValue,
@@ -52,11 +50,6 @@ const AddCryptoCurrencyModal: FC<AddCryptoCurrencyModalProps> = ({
         To add a new Cryptocurrency asset to your portfolio, select the asset
         from the list below, followed by the total number of units held.
       </Typography>
-      {submitError && (
-        <Alert severity="error" sx={{ mb: 3 }}>
-          {submitError}
-        </Alert>
-      )}
       <Box sx={{ mb: 2 }}>
         <CryptoCurrencyAutocomplete
           options={options}

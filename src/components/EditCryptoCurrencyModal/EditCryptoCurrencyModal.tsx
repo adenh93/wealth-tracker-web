@@ -1,29 +1,42 @@
 import { FC } from 'react'
 import { TextField, Typography } from '@mui/material'
-import { useForm } from 'react-hook-form'
+import { FieldError, UseFormRegister } from 'react-hook-form'
 import ConfirmModal from '../ui/ConfirmModal'
 import { CryptoCurrencyHolding } from '../../graphql/types'
+
+interface EditCryptoCurrencyFormErrors {
+  holdings?: FieldError | undefined
+}
+
+export interface EditCryptoCurrencyForm {
+  holdings: number | undefined
+}
 
 export interface EditCryptoCurrencyModalProps {
   asset: CryptoCurrencyHolding
   open: boolean
-  handleSave: () => void
+  submitting: boolean
+  errors: EditCryptoCurrencyFormErrors
+  register: UseFormRegister<EditCryptoCurrencyForm>
+  handleSubmit: (e: any) => void
   handleClose: (e: any) => void
 }
 
 const EditCryptoCurrencyModal: FC<EditCryptoCurrencyModalProps> = ({
   asset,
   open,
-  handleSave,
+  submitting,
+  errors,
+  register,
+  handleSubmit,
   handleClose,
-}) => {
-  const { register, handleSubmit } = useForm()
-
-  return (
+}) => (
+  <form onSubmit={handleSubmit}>
     <ConfirmModal
       open={open}
       title="Edit Asset"
-      handleConfirm={handleSubmit(handleSave)}
+      disabled={submitting}
+      handleConfirm={handleSubmit}
       handleClose={handleClose}
     >
       <Typography variant="body2" sx={{ mb: 2 }}>
@@ -31,14 +44,18 @@ const EditCryptoCurrencyModal: FC<EditCryptoCurrencyModalProps> = ({
         {asset.cryptoCurrency?.symbol}):
       </Typography>
       <TextField
-        {...register('newHoldings')}
-        variant="standard"
-        label="New Holdings"
+        {...register('holdings')}
+        disabled={submitting}
+        fullWidth
+        size="small"
+        label="Holdings"
         type="number"
-        data-testid="new-holdings-input"
+        InputProps={{ inputProps: { min: 0, max: 10 } }}
+        error={!!errors.holdings}
+        helperText={errors.holdings?.message}
       />
     </ConfirmModal>
-  )
-}
+  </form>
+)
 
 export default EditCryptoCurrencyModal

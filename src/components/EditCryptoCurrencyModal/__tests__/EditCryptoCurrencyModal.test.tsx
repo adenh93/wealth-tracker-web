@@ -23,7 +23,10 @@ describe('EditCryptoCurrencyModal component tests', () => {
       <EditCryptoCurrencyModal
         asset={mockAsset}
         open={true}
-        handleSave={jest.fn()}
+        errors={{}}
+        submitting={false}
+        register={jest.fn()}
+        handleSubmit={jest.fn()}
         handleClose={jest.fn()}
       />
     )
@@ -36,7 +39,10 @@ describe('EditCryptoCurrencyModal component tests', () => {
       <EditCryptoCurrencyModal
         asset={mockAsset}
         open={true}
-        handleSave={jest.fn()}
+        errors={{}}
+        submitting={false}
+        register={jest.fn()}
+        handleSubmit={jest.fn()}
         handleClose={jest.fn()}
       />
     )
