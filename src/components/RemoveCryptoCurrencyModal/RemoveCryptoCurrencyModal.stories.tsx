@@ -33,6 +33,9 @@ const asset: CryptoCurrencyHolding = {
 Primary.args = {
   asset,
   open: true,
+  submitting: false,
+  inputState: '',
+  handleInputChange: () => {},
   handleConfirm: () => {},
   handleClose: () => {},
 }

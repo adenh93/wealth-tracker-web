@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC } from 'react'
 import { Input, Typography } from '@mui/material'
 import ConfirmModal from '../ui/ConfirmModal'
 import { CryptoCurrencyHolding } from '../../graphql/types'
@@ -6,20 +6,22 @@ import { CryptoCurrencyHolding } from '../../graphql/types'
 export interface RemoveCryptoCurrencyModalProps {
   asset: CryptoCurrencyHolding
   open: boolean
-  handleConfirm: () => void
-  handleClose: () => void
+  submitting: boolean
+  inputState: string
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleConfirm: (e: any) => void
+  handleClose: (e: any) => void
 }
 
 const RemoveCryptoCurrencyModal: FC<RemoveCryptoCurrencyModalProps> = ({
   asset,
   open,
+  submitting,
+  inputState,
+  handleInputChange,
   handleConfirm,
   handleClose,
 }) => {
-  const [inputState, setInputState] = useState('')
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setInputState(e.currentTarget.value)
-
   return (
     <ConfirmModal
       open={open}

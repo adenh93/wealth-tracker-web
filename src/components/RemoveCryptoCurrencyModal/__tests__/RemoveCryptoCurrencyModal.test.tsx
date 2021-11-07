@@ -1,5 +1,4 @@
 import { waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { CryptoCurrencyHolding } from '../../../graphql/types'
 import { render } from '../../../utils/testUtils'
 import RemoveCryptoCurrencyModal from '../RemoveCryptoCurrencyModal'
@@ -25,6 +24,9 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
+        submitting={false}
+        inputState=""
+        handleInputChange={jest.fn()}
         handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
@@ -38,6 +40,9 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
+        submitting={false}
+        inputState=""
+        handleInputChange={jest.fn()}
         handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
@@ -51,14 +56,13 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
+        submitting={false}
+        inputState=""
+        handleInputChange={jest.fn()}
         handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
     )
-
-    const input = getByTestId('delete-input')
-
-    userEvent.type(input, 'not-delete')
 
     const confirmButton = getByTestId('confirm-button') as HTMLButtonElement
 
@@ -70,14 +74,13 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
         open={true}
+        submitting={false}
+        inputState="delete"
+        handleInputChange={jest.fn()}
         handleConfirm={jest.fn()}
         handleClose={jest.fn()}
       />
     )
-
-    const input = getByTestId('delete-input')
-
-    userEvent.type(input, 'delete')
 
     const confirmButton = getByTestId('confirm-button') as HTMLButtonElement
 
