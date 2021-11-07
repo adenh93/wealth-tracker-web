@@ -14,6 +14,7 @@ import { AddCryptoCurrencyForm } from '../components/AddCryptoCurrencyModal'
 import { extractInputErrorField } from '../utils/apollo'
 import { EditCryptoCurrencyForm } from '../components/EditCryptoCurrencyModal/EditCryptoCurrencyModal'
 import { ModalContext } from '../context/Modal'
+import { AlertContext } from '../context/Alert'
 
 interface EditCryptoCurrencyContainerProps {
   asset: CryptoCurrencyHolding
@@ -23,6 +24,7 @@ const EditCryptoCurrencyContainer: FC<EditCryptoCurrencyContainerProps> = ({
   asset,
 }) => {
   const { hideModal } = useContext(ModalContext)
+  const { showAlert } = useContext(AlertContext)
 
   const {
     setError,
@@ -41,7 +43,10 @@ const EditCryptoCurrencyContainer: FC<EditCryptoCurrencyContainerProps> = ({
       const field = extractInputErrorField<EditCryptoCurrencyForm>(error)
       if (field) setError(field, { message: error.message })
     },
-    onCompleted: hideModal,
+    onCompleted: () => {
+      hideModal()
+      showAlert('Successfully updated Cryptocurrency holding.')
+    },
   })
 
   const onSubmit = handleSubmit(async (data: EditCryptoCurrencyForm) => {

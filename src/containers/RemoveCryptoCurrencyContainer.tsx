@@ -8,6 +8,7 @@ import {
 import { CRYPTOCURRENCY_HOLDINGS_DELETE } from '../graphql/Mutation'
 import RemoveCryptoCurrencyModal from '../components/RemoveCryptoCurrencyModal'
 import { ModalContext } from '../context/Modal'
+import { AlertContext } from '../context/Alert'
 
 interface RemoveCryptoCurrencyContainerProps {
   asset: CryptoCurrencyHolding
@@ -17,6 +18,8 @@ const EditCryptoCurrencyContainer: FC<RemoveCryptoCurrencyContainerProps> = ({
   asset,
 }) => {
   const { hideModal } = useContext(ModalContext)
+  const { showAlert } = useContext(AlertContext)
+
   const [confirmationInput, setConfirmationInput] = useState('')
 
   const [deleteHolding, { loading: submitting }] = useMutation<
@@ -26,7 +29,10 @@ const EditCryptoCurrencyContainer: FC<RemoveCryptoCurrencyContainerProps> = ({
     variables: {
       id: asset.id!,
     },
-    onCompleted: hideModal,
+    onCompleted: () => {
+      hideModal()
+      showAlert('Successfully removed Cryptocurrency holding.')
+    },
   })
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
