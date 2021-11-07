@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react'
 import { CryptoCurrencyHolding } from '../../graphql/types'
+import Modal from '../ui/Modal'
 import RemoveCryptoCurrencyModal, {
   RemoveCryptoCurrencyModalProps,
 } from './RemoveCryptoCurrencyModal'
@@ -10,7 +11,9 @@ const config = {
 }
 
 const Template: Story<RemoveCryptoCurrencyModalProps> = (args) => (
-  <RemoveCryptoCurrencyModal {...args} />
+  <Modal title="Remove Asset" handleClose={() => {}}>
+    <RemoveCryptoCurrencyModal {...args} />
+  </Modal>
 )
 
 export const Primary = Template.bind({})
@@ -32,7 +35,6 @@ const asset: CryptoCurrencyHolding = {
 
 Primary.args = {
   asset,
-  open: true,
   submitting: false,
   inputState: '',
   handleInputChange: () => {},

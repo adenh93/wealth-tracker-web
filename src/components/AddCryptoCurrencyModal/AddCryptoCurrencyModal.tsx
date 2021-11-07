@@ -17,7 +17,6 @@ export interface AddCryptoCurrencyForm {
 
 export interface AddCryptoCurrencyModalProps {
   options: CryptoCurrency[]
-  open: boolean
   submitting: boolean
   errors: AddCryptoCurrencyFormErrors
   register: UseFormRegister<AddCryptoCurrencyForm>
@@ -29,7 +28,6 @@ export interface AddCryptoCurrencyModalProps {
 
 const AddCryptoCurrencyModal: FC<AddCryptoCurrencyModalProps> = ({
   options,
-  open,
   submitting,
   errors,
   register,
@@ -40,9 +38,7 @@ const AddCryptoCurrencyModal: FC<AddCryptoCurrencyModalProps> = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <ConfirmModal
-      open={open}
       disabled={submitting}
-      title="Add Asset"
       handleConfirm={handleSubmit}
       handleClose={handleClose}
     >

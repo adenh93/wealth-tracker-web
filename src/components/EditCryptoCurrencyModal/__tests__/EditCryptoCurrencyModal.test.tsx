@@ -22,7 +22,6 @@ describe('EditCryptoCurrencyModal component tests', () => {
     const { asFragment } = render(
       <EditCryptoCurrencyModal
         asset={mockAsset}
-        open={true}
         errors={{}}
         submitting={false}
         register={jest.fn()}
@@ -38,7 +37,6 @@ describe('EditCryptoCurrencyModal component tests', () => {
     const { getByText } = render(
       <EditCryptoCurrencyModal
         asset={mockAsset}
-        open={true}
         errors={{}}
         submitting={false}
         register={jest.fn()}

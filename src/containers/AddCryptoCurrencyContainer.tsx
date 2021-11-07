@@ -60,7 +60,6 @@ const AddCryptoCurrencyContainer: FC = () => {
   return (
     <AddCryptoCurrencyModal
       options={data?.cryptoCurrencies || []}
-      open={true}
       submitting={submitting}
       errors={errors}
       register={register}

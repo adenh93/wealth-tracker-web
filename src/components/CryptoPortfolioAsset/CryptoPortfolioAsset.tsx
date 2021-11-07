@@ -10,9 +10,15 @@ import { getCMCLogoUrl } from '../../utils/cryptoCurrency'
 
 export interface CryptoPortfolioAssetProps {
   asset: CryptoCurrencyHolding
+  onEdit: (asset: CryptoCurrencyHolding) => void
+  onRemove: (asset: CryptoCurrencyHolding) => void
 }
 
-const CryptoPortfolioAsset: FC<CryptoPortfolioAssetProps> = ({ asset }) => (
+const CryptoPortfolioAsset: FC<CryptoPortfolioAssetProps> = ({
+  asset,
+  onEdit,
+  onRemove,
+}) => (
   <StyledTableRow>
     <TableCell align="left">
       <AssetInfoWrapper>
@@ -49,10 +55,20 @@ const CryptoPortfolioAsset: FC<CryptoPortfolioAssetProps> = ({ asset }) => (
       <TableBodySubText>{formatNumber(asset.holdings)}</TableBodySubText>
     </TableCell>
     <TableCell align="left">
-      <Button size="small" variant="contained" sx={{ marginRight: 1 }}>
+      <Button
+        size="small"
+        variant="contained"
+        sx={{ marginRight: 1 }}
+        onClick={() => onEdit(asset)}
+      >
         Edit
       </Button>
-      <Button size="small" variant="contained" color="secondary">
+      <Button
+        size="small"
+        variant="contained"
+        color="secondary"
+        onClick={() => onRemove(asset)}
+      >
         Remove
       </Button>
     </TableCell>

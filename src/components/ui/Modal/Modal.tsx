@@ -4,14 +4,13 @@ import CloseIcon from '@mui/icons-material/Close'
 import { ModalBody } from './Modal.css'
 
 export interface ModalProps {
-  open: boolean
   title: string
   handleClose: (e: any) => void
 }
 
-const Modal: FC<ModalProps> = ({ open, title, handleClose, children }) => (
+const Modal: FC<ModalProps> = ({ title, children, handleClose }) => (
   <MuiModal
-    open={open}
+    open={true}
     onClose={handleClose}
     aria-labelledby="modal-modal-title"
   >

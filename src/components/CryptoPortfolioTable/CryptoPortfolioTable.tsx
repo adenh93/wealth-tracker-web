@@ -15,11 +15,15 @@ import { CryptoCurrencyHolding } from '../../graphql/types'
 export interface CryptoPortfolioTableProps {
   assets: CryptoCurrencyHolding[]
   loading: boolean
+  onEdit: (asset: CryptoCurrencyHolding) => void
+  onRemove: (asset: CryptoCurrencyHolding) => void
 }
 
 const CryptoPortfolioTable: FC<CryptoPortfolioTableProps> = ({
   assets,
   loading,
+  onEdit,
+  onRemove,
 }) => (
   <TableContainer component={Paper}>
     <Table>
@@ -39,7 +43,12 @@ const CryptoPortfolioTable: FC<CryptoPortfolioTableProps> = ({
       </StyledTableHead>
       <TableBody>
         {assets.map((asset: CryptoCurrencyHolding) => (
-          <CryptoPortfolioAsset key={asset.id} asset={asset} />
+          <CryptoPortfolioAsset
+            key={asset.id}
+            asset={asset}
+            onEdit={onEdit}
+            onRemove={onRemove}
+          />
         ))}
       </TableBody>
     </Table>

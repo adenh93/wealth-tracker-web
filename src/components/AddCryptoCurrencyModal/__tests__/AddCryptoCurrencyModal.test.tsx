@@ -28,7 +28,6 @@ describe('AddCryptoCurrencyModal component tests', () => {
     const { asFragment } = render(
       <AddCryptoCurrencyModal
         options={mockOptions}
-        open={true}
         submitting={false}
         errors={{}}
         register={jest.fn()}

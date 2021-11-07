@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { ApolloError, useMutation } from '@apollo/client'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
@@ -13,6 +13,7 @@ import { CRYPTOCURRENCY_HOLDINGS_UPDATE } from '../graphql/Mutation'
 import { AddCryptoCurrencyForm } from '../components/AddCryptoCurrencyModal'
 import { extractInputErrorField } from '../utils/apollo'
 import { EditCryptoCurrencyForm } from '../components/EditCryptoCurrencyModal/EditCryptoCurrencyModal'
+import { ModalContext } from '../context/Modal'
 
 interface EditCryptoCurrencyContainerProps {
   asset: CryptoCurrencyHolding
@@ -21,6 +22,8 @@ interface EditCryptoCurrencyContainerProps {
 const EditCryptoCurrencyContainer: FC<EditCryptoCurrencyContainerProps> = ({
   asset,
 }) => {
+  const { hideModal } = useContext(ModalContext)
+
   const {
     setError,
     register,
@@ -38,6 +41,7 @@ const EditCryptoCurrencyContainer: FC<EditCryptoCurrencyContainerProps> = ({
       const field = extractInputErrorField<EditCryptoCurrencyForm>(error)
       if (field) setError(field, { message: error.message })
     },
+    onCompleted: hideModal,
   })
 
   const onSubmit = handleSubmit(async (data: EditCryptoCurrencyForm) => {
@@ -54,12 +58,11 @@ const EditCryptoCurrencyContainer: FC<EditCryptoCurrencyContainerProps> = ({
   return (
     <EditCryptoCurrencyModal
       asset={asset}
-      open={true}
       submitting={submitting}
       errors={errors}
       register={register}
       handleSubmit={onSubmit}
-      handleClose={() => {}}
+      handleClose={hideModal}
     />
   )
 }

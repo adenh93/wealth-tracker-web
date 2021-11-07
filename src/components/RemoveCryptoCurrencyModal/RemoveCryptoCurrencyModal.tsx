@@ -5,7 +5,6 @@ import { CryptoCurrencyHolding } from '../../graphql/types'
 
 export interface RemoveCryptoCurrencyModalProps {
   asset: CryptoCurrencyHolding
-  open: boolean
   submitting: boolean
   inputState: string
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
@@ -15,7 +14,6 @@ export interface RemoveCryptoCurrencyModalProps {
 
 const RemoveCryptoCurrencyModal: FC<RemoveCryptoCurrencyModalProps> = ({
   asset,
-  open,
   submitting,
   inputState,
   handleInputChange,
@@ -24,8 +22,6 @@ const RemoveCryptoCurrencyModal: FC<RemoveCryptoCurrencyModalProps> = ({
 }) => {
   return (
     <ConfirmModal
-      open={open}
-      title="Delete Asset"
       disabled={inputState !== 'delete'}
       handleConfirm={handleConfirm}
       handleClose={handleClose}

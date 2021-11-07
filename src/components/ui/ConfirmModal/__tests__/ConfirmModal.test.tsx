@@ -5,12 +5,7 @@ import ConfirmModal from '../ConfirmModal'
 describe('ConfirmModal component tests', () => {
   test('matches snapshot', () => {
     const { asFragment } = render(
-      <ConfirmModal
-        open={true}
-        title="Test"
-        handleConfirm={jest.fn()}
-        handleClose={jest.fn()}
-      />
+      <ConfirmModal handleConfirm={jest.fn()} handleClose={jest.fn()} />
     )
 
     expect(asFragment).toMatchSnapshot()
@@ -20,12 +15,7 @@ describe('ConfirmModal component tests', () => {
     const mockHandleDelete = jest.fn()
 
     const { getByTestId } = render(
-      <ConfirmModal
-        open={true}
-        title="Test"
-        handleConfirm={mockHandleDelete}
-        handleClose={jest.fn()}
-      />
+      <ConfirmModal handleConfirm={mockHandleDelete} handleClose={jest.fn()} />
     )
 
     const confirmButton = getByTestId('confirm-button') as HTMLButtonElement
@@ -38,12 +28,7 @@ describe('ConfirmModal component tests', () => {
     const mockHandleClose = jest.fn()
 
     const { getByTestId } = render(
-      <ConfirmModal
-        open={true}
-        title="Test"
-        handleConfirm={jest.fn()}
-        handleClose={mockHandleClose}
-      />
+      <ConfirmModal handleConfirm={jest.fn()} handleClose={mockHandleClose} />
     )
 
     const cancelButton = getByTestId('cancel-button')
@@ -57,8 +42,6 @@ describe('ConfirmModal component tests', () => {
 
     const { getByTestId } = render(
       <ConfirmModal
-        open={true}
-        title="Test"
         disabled={true}
         handleConfirm={mockHandleDelete}
         handleClose={jest.fn()}

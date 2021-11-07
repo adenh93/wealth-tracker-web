@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react'
+import Modal from '../ui/Modal'
 import AddCryptoCurrencyModal, {
   AddCryptoCurrencyModalProps,
 } from './AddCryptoCurrencyModal'
@@ -10,7 +11,9 @@ const config = {
 }
 
 const Template: Story<AddCryptoCurrencyModalProps> = (args) => (
-  <AddCryptoCurrencyModal {...args} />
+  <Modal title="Add Asset" handleClose={() => {}}>
+    <AddCryptoCurrencyModal {...args} />
+  </Modal>
 )
 
 export const Primary = Template.bind({})
@@ -38,7 +41,6 @@ const options: CryptoCurrency[] = [
 
 Primary.args = {
   options,
-  open: true,
   errors: {},
   setValue: () => {},
   handleSubmit: () => {},

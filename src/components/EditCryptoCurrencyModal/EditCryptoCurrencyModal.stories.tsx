@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react'
+import Modal from '../ui/Modal'
 import EditCryptoCurrencyModal, {
   EditCryptoCurrencyModalProps,
 } from './EditCryptoCurrencyModal'
@@ -10,7 +11,9 @@ const config = {
 }
 
 const Template: Story<EditCryptoCurrencyModalProps> = (args) => (
-  <EditCryptoCurrencyModal {...args} />
+  <Modal title="Edit Asset" handleClose={() => {}}>
+    <EditCryptoCurrencyModal {...args} />
+  </Modal>
 )
 
 export const Primary = Template.bind({})
@@ -32,7 +35,6 @@ const asset: CryptoCurrencyHolding = {
 
 Primary.args = {
   asset,
-  open: true,
   errors: {},
   handleSubmit: () => {},
   handleClose: () => {},

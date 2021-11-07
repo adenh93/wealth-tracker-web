@@ -14,7 +14,6 @@ export interface EditCryptoCurrencyForm {
 
 export interface EditCryptoCurrencyModalProps {
   asset: CryptoCurrencyHolding
-  open: boolean
   submitting: boolean
   errors: EditCryptoCurrencyFormErrors
   register: UseFormRegister<EditCryptoCurrencyForm>
@@ -24,7 +23,6 @@ export interface EditCryptoCurrencyModalProps {
 
 const EditCryptoCurrencyModal: FC<EditCryptoCurrencyModalProps> = ({
   asset,
-  open,
   submitting,
   errors,
   register,
@@ -33,8 +31,6 @@ const EditCryptoCurrencyModal: FC<EditCryptoCurrencyModalProps> = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <ConfirmModal
-      open={open}
-      title="Edit Asset"
       disabled={submitting}
       handleConfirm={handleSubmit}
       handleClose={handleClose}

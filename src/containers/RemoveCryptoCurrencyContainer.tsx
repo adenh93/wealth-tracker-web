@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent } from 'react'
+import { FC, useState, ChangeEvent, useContext } from 'react'
 import { useMutation } from '@apollo/client'
 import {
   CryptoCurrencyHolding,
@@ -7,6 +7,7 @@ import {
 } from '../graphql/types'
 import { CRYPTOCURRENCY_HOLDINGS_DELETE } from '../graphql/Mutation'
 import RemoveCryptoCurrencyModal from '../components/RemoveCryptoCurrencyModal'
+import { ModalContext } from '../context/Modal'
 
 interface RemoveCryptoCurrencyContainerProps {
   asset: CryptoCurrencyHolding
@@ -15,6 +16,7 @@ interface RemoveCryptoCurrencyContainerProps {
 const EditCryptoCurrencyContainer: FC<RemoveCryptoCurrencyContainerProps> = ({
   asset,
 }) => {
+  const { hideModal } = useContext(ModalContext)
   const [confirmationInput, setConfirmationInput] = useState('')
 
   const [deleteHolding, { loading: submitting }] = useMutation<
@@ -24,6 +26,7 @@ const EditCryptoCurrencyContainer: FC<RemoveCryptoCurrencyContainerProps> = ({
     variables: {
       id: asset.id!,
     },
+    onCompleted: hideModal,
   })
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -32,12 +35,11 @@ const EditCryptoCurrencyContainer: FC<RemoveCryptoCurrencyContainerProps> = ({
   return (
     <RemoveCryptoCurrencyModal
       asset={asset}
-      open={true}
       submitting={submitting}
       inputState={confirmationInput}
       handleInputChange={handleInputChange}
       handleConfirm={deleteHolding}
-      handleClose={() => {}}
+      handleClose={hideModal}
     />
   )
 }

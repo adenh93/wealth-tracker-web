@@ -16,7 +16,6 @@ const Template: Story<ModalProps> = (args) => (
 export const Primary = Template.bind({})
 
 Primary.args = {
-  open: true,
   title: 'Modal Component',
   handleClose: () => {},
 }

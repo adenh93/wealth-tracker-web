@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Box, Button } from '@mui/material'
-import Modal, { ModalProps } from '../Modal'
 import { ButtonContainer } from './ConfirmModal.css'
 
-export interface ConfirmModalProps extends ModalProps {
+export interface ConfirmModalProps {
   disabled?: boolean
   handleConfirm: (e: any) => void
+  handleClose: (e: any) => void
 }
 
 const ConfirmModal: FC<ConfirmModalProps> = ({
@@ -13,9 +13,8 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
   handleConfirm,
   handleClose,
   children,
-  ...modalProps
 }) => (
-  <Modal {...modalProps} handleClose={handleClose}>
+  <>
     <Box sx={{ mb: 4 }}>{children}</Box>
     <ButtonContainer>
       <Button
@@ -35,7 +34,7 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
         Cancel
       </Button>
     </ButtonContainer>
-  </Modal>
+  </>
 )
 
 export default ConfirmModal

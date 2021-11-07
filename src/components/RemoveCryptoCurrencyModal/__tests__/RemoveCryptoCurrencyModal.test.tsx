@@ -23,7 +23,6 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
     const { asFragment } = render(
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
-        open={true}
         submitting={false}
         inputState=""
         handleInputChange={jest.fn()}
@@ -39,7 +38,6 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
     const { getByText } = render(
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
-        open={true}
         submitting={false}
         inputState=""
         handleInputChange={jest.fn()}
@@ -55,7 +53,6 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
     const { getByTestId } = render(
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
-        open={true}
         submitting={false}
         inputState=""
         handleInputChange={jest.fn()}
@@ -73,7 +70,6 @@ describe('RemoveCryptoCurrencyModal component tests', () => {
     const { getByTestId } = render(
       <RemoveCryptoCurrencyModal
         asset={mockAsset}
-        open={true}
         submitting={false}
         inputState="delete"
         handleInputChange={jest.fn()}

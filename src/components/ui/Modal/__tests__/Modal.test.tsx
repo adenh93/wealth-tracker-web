@@ -6,7 +6,7 @@ import Modal from '../Modal'
 describe('Modal component tests', () => {
   test('matches snapshot', () => {
     const { asFragment } = render(
-      <Modal open={true} title="Test Modal" handleClose={jest.fn()} />
+      <Modal title="Test Modal" handleClose={jest.fn()} />
     )
 
     expect(asFragment).toMatchSnapshot()
@@ -14,7 +14,7 @@ describe('Modal component tests', () => {
 
   test('renders title', () => {
     const { getByText } = render(
-      <Modal open={true} title="Test Modal" handleClose={jest.fn()} />
+      <Modal title="Test Modal" handleClose={jest.fn()} />
     )
 
     expect(getByText('Test Modal')).not.toBeNull()
@@ -22,7 +22,7 @@ describe('Modal component tests', () => {
 
   test('renders children', () => {
     const { getByText } = render(
-      <Modal open={true} title="Test Modal" handleClose={jest.fn()}>
+      <Modal title="Test Modal" handleClose={jest.fn()}>
         <Typography>Test Modal Children</Typography>
       </Modal>
     )
@@ -34,7 +34,7 @@ describe('Modal component tests', () => {
     const mockHandleClose = jest.fn()
 
     const { getByTestId } = render(
-      <Modal open={true} title="Test Modal" handleClose={mockHandleClose} />
+      <Modal title="Test Modal" handleClose={mockHandleClose} />
     )
 
     const closeButton = getByTestId('close-button')
